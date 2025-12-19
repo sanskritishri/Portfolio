@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskriti Shrivastava | AI & ML Student Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- THEME CONFIGURATION --- */
+        :root {
+            --bg-color: #0f172a;       
+            --card-bg: #1e293b;        
+            --text-primary: #f1f5f9;   
+            --text-secondary: #94a3b8; 
+            --accent-color: #22d3ee;   
+            --accent-glow: rgba(34, 211, 238, 0.15);
+            --border-color: #334155;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .section-spacing {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            max-width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px; /* Added padding to prevent nav overlap */
+            position: relative;
+        }
+
+        .hero-label {
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            background: rgba(34, 211, 238, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bio {
+            max-width: 700px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow buttons to wrap on mobile */
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border-color: var(--border-color);
+            color: var(--text-primary);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- EDUCATION CARD --- */
+        .education-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .education-card:hover {
+    border-left-color: var(--accent-color);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+        
+        .edu-info h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .edu-info p { color: var(--text-secondary); }
+        .edu-date { 
+            background: rgba(255,255,255,0.05); 
+            padding: 8px 15px; 
+            border-radius: 8px; 
+            font-size: 0.9rem; 
+            white-space: nowrap;
+        }
+
+        /* --- SKILLS GRID --- */
+      .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto; /* 👈 center align */
+    padding: 0 20px; /* 👈 left-right gap */
+}
+.skills {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+@media (max-width: 768px) {
+    .skills-container {
+        padding: 0 10px;
+        gap: 20px;
+    }
+}
+.skill-category:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* CLICKABLE CARD STYLES */
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none !important; /* Force no underline */
+        }
+        
+        /* Ensure text colors stay correct even for visited links */
+        .project-card:visited h3, 
+        .project-card:active h3, 
+        .project-card:link h3 {
+            color: var(--text-primary);
+        }
+        
+        .project-card:visited p, 
+        .project-card:active p, 
+        .project-card:link p {
+            color: var(--text-secondary);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        
+        /* External Link Icon */
+        .project-card::after {
+            content: '\f35d'; /* Font Awesome external link */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: rgba(34, 211, 238, 0.1); 
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* --- TRAININGS & ACHIEVEMENTS --- */
+        .flex-row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;      /* center */
+    padding: 0 20px;     /* left-right gap */
+}
+
+@media (max-width: 768px) {
+    .flex-row {
+        padding: 0 10px;
+        gap: 20px;
+    }
+}
+.list-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.certifications {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+        .half-width {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .list-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        
+        .list-card h4 { margin-bottom: 15px; color: var(--accent-color); }
+
+        .check-list li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+        
+        .check-list i {
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            text-align: center;
+            background: #0b1120;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        .hero {
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 120px; /* navbar overlap fix */
+    text-align: center;
+}
+.hero-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3.3rem;
+    line-height: 1.1;
+}
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 30px var(--accent-glow);
+    transform: translateX(-10px); /* 👈 thoda left */
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hero-bio {
+    max-width: 720px;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 35px;
+}
+@media (max-width: 768px) {
+    .hero-intro {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .profile-pic {
+        transform: translateX(0);
+    }
+
+    .hero-text h1 {
+        font-size: 2.4rem;
+    }
+}
+
+        /* --- RESPONSIVE MOBILE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            
+            /* Nav Adjustment for Mobile */
+            nav { 
+                gap: 15px; 
+                padding: 10px 20px; 
+                width: 90%; /* Slightly wider on mobile */
+                justify-content: space-between;
+            }
+            
+            /* Instead of hiding, we make text smaller or stack */
+            .nav-links { 
+                display: none; /* Keeping hidden on very small screens to prevent breaking, recommend adding a JS toggle for full mobile menu in future */ 
+            }
+            
+            /* Show contact button on mobile */
+            .collab-btn {
+                display: block;
+            }
+
+            .section-spacing { padding: 50px 0; }
+            
+            .flex-row { flex-direction: column; gap: 20px; }
+            
+            .half-width { min-width: 100%; }
+        }
+
+        .resume-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.resume-container iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+.resume-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+    .resume-container iframe {
+        height: 380px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">SANSKRITI</div>
+            <div class="nav-links">
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+            </div>
+            <a href="sanskritisrv77@gmail.com" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Contact Me</a>
+        </nav>
+    </header>
+
+
+     <section class="hero">
+    
+    <div class="hero-intro">
+        <div class="profile-pic">
+            <img src="S profile image.png" alt="Sanskriti Shrivastava">
+        </div>
+
+        <div class="hero-text">
+            <h1>Hi, I'm <span class="gradient-text">Sanskriti Shrivastava</span></h1>
+        </div>
+    </div>
+
+    <p class="hero-bio">
+        A motivated <strong>Computer Science (AI & ML) Student</strong> with strong skills in Python,
+        IoT systems, and Machine Learning model development. I am passionate about
+        solving real-world problems through code and innovation.
+    </p>
+
+    <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="https://github.com/sanskritishri" target="_blank" class="btn btn-outline">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/sanskriti-shrivastava-76069932b" target="_blank" class="btn btn-outline">
+            <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="Sanskriti_Shrivastava_Resume.pdf"
+   class="btn btn-primary"
+   target="_blank"
+   >
+   <i class="fas fa-file-pdf"></i> Resume
+</a>
+
+    </div>
+
+</section>
+
+
+        <section id="education" class="section-spacing">
+            <div class="section-header">
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-card">
+                <div class="edu-info">
+                    <h3>B.Tech in Computer Science (AI & ML)</h3>
+                    <p>KIPM College of Engineering & Technology, Gida, Gorakhpur </p>
+                </div>
+                <div class="edu-date">2nd Year (2025 - Present) </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-spacing">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Programming</h4>
+                    <ul class="skill-list">
+                        <li>Python </li>
+                        <li>C / C++ </li>
+                        <li>HTML & CSS </li>
+                        <li>Data Structures & Algorithms </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-brain"></i> AI & Machine Learning</h4>
+                    <ul class="skill-list">
+                        <li>TensorFlow </li>
+                        <li>Scikit-learn </li>
+                        <li>Pandas & NumPy </li>
+                        <li>Model Development </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-microchip"></i> IoT & Tools</h4>
+                    <ul class="skill-list">
+                        <li>Arduino & Sensors </li>
+                        <li>GPS Modules </li>
+                        <li>Git </li>
+                        <li>Firebase & MySQL </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-spacing">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p style="color:var(--text-secondary); margin-top:10px;">Click a card to view details</p>
+            </div>
+            <div class="projects-grid">
+                
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <h3>IoT Blind Stick with GPS</h3>
+                    <p>Smart mobility device for the visually impaired using ultrasonic sensors & GPS for location tracking.</p>
+                    <div class="tags">
+                        <span class="tag">IoT</span>
+                        <span class="tag">Arduino</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <h3>House Price Prediction</h3>
+                    <p>ML model built using Linear Regression to predict housing prices, including data processing & visualization.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">ML</span>
+                    </div>
+                </a>
+
+                <a href="https://sanskritishri.github.io/AirDraw/" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <h3>AirDraw</h3>
+                    <p>Interactive hand-tracking drawing interface using computer vision techniques.</p>
+                    <div class="tags">
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Computer Vision</span>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <h3>Chatbot System</h3>
+                    <p>NLP-powered conversational system designed for intelligent query responses.</p>
+                    <div class="tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </a>
+
+                 <a href="https://sanskritishri.github.io/Edu-Mark/" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <h3>EduMark</h3>
+                    <p>Smart attendance automation platform to streamline classroom management.</p>
+                    <div class="tags">
+                        <span class="tag">Automation</span>
+                        <span class="tag">Database</span>
+                    </div>
+                </a>
+
+                <a href="https://scribesync.preview.emergentagent.com/login" target="_blank" rel="noopener noreferrer" class="project-card" style="border-style: dashed;">
+                    <h3>SyncScribe (In Progress)</h3>
+                    <p>Assignment sharing & reward system platform currently under development.</p>
+                    <div class="tags">
+                        <span class="tag">Web Dev</span>
+                        <span class="tag">System Design</span>
+                    </div>
+                </a>
+
+                <a href="https://krishna-shrivastav.github.io/Swa-Drive/" target="_blank" rel="noopener noreferrer" class="project-card" style="border-style: dashed;">
+                    <h3>SwaDrive (In Progress)</h3>
+                    <p>Digital storage & automation service for efficient file handling.</p>
+                    <div class="tags">
+                        <span class="tag">Cloud</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="certifications" class="section-spacing">
+            <div class="flex-row">
+                <div class="half-width">
+                    <h3 style="margin-bottom: 20px;">Trainings & Certifications</h3>
+                    <div class="list-card">
+                        <ul class="check-list">
+                            <li><i class="fas fa-certificate"></i> AI/ML Certification </li>
+                            <li><i class="fas fa-certificate"></i> IoT Bootcamp </li>
+                            <li><i class="fas fa-certificate"></i> 1-Month Python Training </li>
+                            <li><i class="fas fa-certificate"></i> HTML Bootcamp </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="half-width">
+                    <h3 style="margin-bottom: 20px;">Achievements & Soft Skills</h3>
+                    <div class="list-card">
+                        <ul class="check-list">
+                            <li><i class="fas fa-trophy"></i> Hackathon Participation/Winner </li>
+                            <li><i class="fas fa-check-circle"></i> Completed 4+ Real-World Projects </li>
+                            <li><i class="fas fa-star"></i> <strong>Soft Skills:</strong> Leadership, Teamwork, Creativity, Problem-Solving </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="resume" class="section-spacing">
+    <div class="section-header">
+        <h2 class="section-title">Resume</h2>
+        <p style="color: var(--text-secondary); margin-top: 10px;">
+            View or download my resume
+        </p>
+    </div>
+
+    <div class="resume-container">
+       
+
+        <div class="resume-actions">
+            <a href="Sanskriti_Shrivastava_Resume.pdf"
+               target="_blank"
+               class="btn btn-outline">
+               <i class="fas fa-eye"></i> View Fullscreen
+            </a>
+
+            <a href="Sanskriti_Shrivastava_Resume.pdf"
+               download
+               class="btn btn-primary">
+               <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sanskriti Shrivastava. All rights reserved.</p>
+            <p style="margin-top: 5px; opacity: 0.5;">Built with HTML & CSS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
